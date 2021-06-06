@@ -9,7 +9,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        API_Client.getInstanceAPI();
+        API_Client.getInstanceAPI();//sds
     }
 
 }
