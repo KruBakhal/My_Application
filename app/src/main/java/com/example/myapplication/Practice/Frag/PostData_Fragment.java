@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.myapplication.Practice.API_Interface.API_Client.getInstanceAPI2;
+import static com.example.myapplication.Practice.API_Interface.API_Client.getInstanceAPI;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,7 +88,7 @@ public class PostData_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Call<Post_Example> post_exampleCall = getInstanceAPI2().getSpecific_User_Post
+        Call<Post_Example> post_exampleCall = getInstanceAPI().getSpecific_User_Post
                 (mParam1);
 
         post_exampleCall.enqueue(new Callback<Post_Example>() {

@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
     private User_Adapter user_adapter;
     private MyPagerAdapter_Native myPagerAdapter_native;
     private LiveDataConstant viewModelProvider;
-    private @NonNull ActivityMain2Binding activityMainBinding;
+    private @NonNull
+    ActivityMain2Binding activityMainBinding;
 
 
     @Override
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
     };
 
     private void fetch_Users(int page) {
-        api_interface = getInstanceAPI().create(API_Interface.class);
+        api_interface = getInstanceAPI();
 
         Call<Example> datumCall = api_interface.getAllUser(String.valueOf(page));
         progressDialog.show();

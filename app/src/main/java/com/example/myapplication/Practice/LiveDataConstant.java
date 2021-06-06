@@ -37,7 +37,7 @@ public class LiveDataConstant extends ViewModel {
     public void fetchUserData(int page) {
 
 
-        Call<Example> datumCall = API_Client.getInstanceAPI2().getAllUser(String.valueOf(page));
+        Call<Example> datumCall = API_Client.getInstanceAPI().getAllUser(String.valueOf(page));
 
         datumCall.enqueue(new Callback<Example>() {
             @Override
