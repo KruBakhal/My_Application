@@ -93,7 +93,8 @@ public class Ebizz_MainActivity extends AppCompatActivity implements CategoryAda
         Category category = lisCategory.get(position);
 
 
-        Call<ShopExample> call = RetrofitClient.getInstance().getMyApi().getShopCatgory(category.getNameEng().toLowerCase(),
+        Call<ShopExample> call = RetrofitClient.getInstance().getMyApi()
+                .getShopCatgory(category.getNameEng().toLowerCase(),
                 "3099", "21.1956942", "72.808376");
         progressBar.show();
         call.enqueue(new Callback<ShopExample>() {

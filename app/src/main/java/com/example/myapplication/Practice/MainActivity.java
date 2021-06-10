@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.Constants.WebConstants;
+import com.example.myapplication.PersonalData.LiveDataSample.PersonalLiveData;
 import com.example.myapplication.Practice.API_Interface.API_Interface;
 import com.example.myapplication.Practice.Adapter.MyPagerAdapter_Native;
 import com.example.myapplication.Practice.Adapter.User_Adapter;
@@ -44,6 +45,7 @@ import static com.example.myapplication.Practice.API_Interface.API_Client.getIns
 
 public class MainActivity extends AppCompatActivity implements User_Adapter.CategoryListener {
 
+    private static final String TAG = "SSA";
     RecyclerView rv_Llist;
     private List<Datum> list_user;
     TextView tvConnectivityStatus;
@@ -62,13 +64,23 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG, "onCreate: ");
 //        setContentView(R.layout.activity_main2);
         activityMainBinding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
         UI(activityMainBinding.getRoot());
         internetSetup();
         viewModelProvider = new ViewModelProvider(this).get(LiveDataConstant.class);
-        viewModelProvider.getList_Post(0).observe(this, obsererUser);
+        PersonalLiveData vasuLiveData = new ViewModelProvider(this).get(PersonalLiveData.class);
+        vasuLiveData.getVasuResponse().observe(this, new Observer<com.example.myapplication.PersonalData.Model.Example>() {
+            @Override
+            public void onChanged(com.example.myapplication.PersonalData.Model.Example example) {
+
+                Log.d(TAG, "onChanged: "+example.toString());
+            }
+        });
+
     }
 
     private void internetSetup() {
@@ -83,11 +95,15 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
                             Toast.makeText(MainActivity.this, String.format("Wifi turned ON"), Toast.LENGTH_SHORT).show();
                             isOffline = false;
                             tvConnectivityStatus.setText("Online");
+                            if (list_user == null || list_user.size() == 0)
+                                viewModelProvider.getList_Post(1).observe(MainActivity.this, obsererUser);
                             break;
                         case 1:
                             isOffline = false;
                             tvConnectivityStatus.setText("Online");
                             Toast.makeText(MainActivity.this, String.format("Mobile data turned ON"), Toast.LENGTH_SHORT).show();
+                            if (list_user == null || list_user.size() == 0)
+                                viewModelProvider.getList_Post(1).observe(MainActivity.this, obsererUser);
                             break;
                     }
                 } else {
@@ -107,7 +123,8 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
                 list_user = null;
             }
             list_user = new ArrayList<>();
-            list_user.addAll(data);
+            if (data != null && data.size() != 0)
+                list_user.addAll(data);
             user_adapter = new User_Adapter(MainActivity.this, list_user, MainActivity.this);
             rv_Llist.setAdapter(user_adapter);
             user_adapter.selectedCatgory = 0;
@@ -225,17 +242,33 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
     protected void onResume() {
         super.onResume();
 //        registerReceiver(broadcastInternet, intentFilter);
+        Log.d(TAG, "onResume: ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 //        unregisterReceiver(broadcastInternet);
+        Log.d(TAG, "onPause: ");
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
     }
 
     private BroadcastReceiver broadcastInternet = new BroadcastReceiver() {
@@ -265,4 +298,6 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Cate
     public void fecth3(View view) {
         viewModelProvider.getList_Post(3).observe(this, obsererUser);
     }
+
+
 }
