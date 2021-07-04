@@ -12,14 +12,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.MyApplication">
-        <activity android:name=".PersonalData.PersonalDataActivity">
+        android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Matrix.MatrixActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PersonalData.PersonalDataActivity">
+
         </activity>
 
         <receiver android:name=".Practice.Reciever.MyNetworkReceiver">
@@ -28,10 +31,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Practice.MainActivity">
-
-        </activity>
-        <activity android:name=".Ebizz.Ebizz_MainActivity"></activity>
+        <activity android:name=".Practice.MainActivity"></activity>
+        <activity android:name=".Ebizz.Ebizz_MainActivity" />
     </application>
 
 </manifest>
