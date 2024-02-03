@@ -38,7 +38,7 @@ public class PersonalLiveData extends ViewModel {
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
 
-                Log.d("TAG", "onFailure: "+t.getMessage());
+                Log.d("TAG", "onFailure: " + t.getMessage());
             }
         });
     }

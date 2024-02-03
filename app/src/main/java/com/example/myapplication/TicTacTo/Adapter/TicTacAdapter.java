@@ -1,7 +1,5 @@
-package com.example.myapplication.Matrix.Adapter;
+package com.example.myapplication.TicTacTo.Adapter;
 
-import android.content.Context;
-import android.database.MatrixCursor;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,13 +18,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatrixAdapter extends RecyclerView.Adapter<MatrixAdapter.UserViewHolder> {
+public class TicTacAdapter extends RecyclerView.Adapter<TicTacAdapter.UserViewHolder> {
 
     List<MatrixModel> list;
     List<MatrixModel> listSelected;
     int value;
 
-    public MatrixAdapter(List<MatrixModel> list, int value) {
+    public TicTacAdapter(List<MatrixModel> list, int value) {
         this.list = list;
         this.value = value;
 
@@ -41,7 +39,7 @@ public class MatrixAdapter extends RecyclerView.Adapter<MatrixAdapter.UserViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull MatrixAdapter.UserViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull TicTacAdapter.UserViewHolder holder, int position) {
 
         MatrixModel matrixModel = list.get(position);
         holder.button.setText(matrixModel.getRow() + "" + matrixModel.getColumn());
@@ -89,6 +87,7 @@ public class MatrixAdapter extends RecyclerView.Adapter<MatrixAdapter.UserViewHo
                             v2 = v2 + 1;
                             if (!checkInSelectedList(new MatrixModel(v1, v2)))
                                 listSelected.add(new MatrixModel(v1, v2));
+
                         }
 
                     }

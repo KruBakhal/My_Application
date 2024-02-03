@@ -1,5 +1,8 @@
 package com.example.myapplication.PersonalData;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +35,8 @@ public class PersonalDataActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     public void fecthCall(View view) {
         vasuLiveData.getVasuResponse().observe(this, new Observer<Example>() {

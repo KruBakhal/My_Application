@@ -36,7 +36,8 @@ public class ConnectionLiveData extends LiveData<ConnectionModel> {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getExtras() != null) {
-                NetworkInfo activeNetwork = (NetworkInfo) intent.getExtras().get(ConnectivityManager.EXTRA_NETWORK_INFO);
+                NetworkInfo activeNetwork = (NetworkInfo) intent.getExtras()
+                        .get(ConnectivityManager.EXTRA_NETWORK_INFO);
                 boolean isConnected = activeNetwork != null &&
                         activeNetwork.isConnectedOrConnecting();
                 if (isConnected) {

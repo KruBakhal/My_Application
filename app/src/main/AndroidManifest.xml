@@ -14,16 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Matrix.MatrixActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".PersonalData.PersonalDataActivity">
-
-        </activity>
+        <activity android:name=".TicTacTo.TicTacActivity"></activity>
+        <activity android:name=".DayDreamSoft.SecondActivity" />
+        <activity android:name=".DayDreamSoft.FirstActivity"></activity>
+        <activity android:name=".Matrix.MatrixActivity" />
+        <activity android:name=".PersonalData.PersonalDataActivity" />
 
         <receiver android:name=".Practice.Reciever.MyNetworkReceiver">
             <intent-filter>
@@ -31,7 +26,13 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Practice.MainActivity"></activity>
+        <activity android:name=".Practice.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Ebizz.Ebizz_MainActivity" />
     </application>
 
