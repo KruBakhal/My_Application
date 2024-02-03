@@ -33,8 +33,4 @@ The project is organized into packages based on functionality:
 - **ViewPager and Fragments:** Utilize ViewPager and Fragments for seamless navigation and UI management.
 - **ViewModel:** Implement ViewModel to efficiently manage UI-related data and lifecycle.
 
-## Usage
 
-Clone the repository and open the project in Android Studio. Run it on an emulator or a physical device to experience the Tic-Tac-Toe game with integrated API calls and a modularized structure.
-
-Feel free to contribute, report issues, or suggest improvements. Happy coding!
